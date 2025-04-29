@@ -1,8 +1,13 @@
 package dev.allisson.algasensors.temperature.monitoring.api.mapper;
 
-import dev.allisson.algasensors.temperature.monitoring.api.model.TemperatureLogOutput;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.Mappings;
+import org.mapstruct.ReportingPolicy;
+
+import dev.allisson.algasensors.temperature.monitoring.api.model.TemperatureLogData;
 import dev.allisson.algasensors.temperature.monitoring.domain.model.TemperatureLog;
-import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface TemperatureLogMapper {
@@ -12,6 +17,6 @@ public interface TemperatureLogMapper {
             @Mapping(source = "value", target = "temperature"),
             @Mapping(source = "registeredAt", target = "registeredAt")
     })
-    TemperatureLogOutput toDto(TemperatureLog temperatureLog);
+    TemperatureLogData toDto(TemperatureLog temperatureLog);
 
 }
